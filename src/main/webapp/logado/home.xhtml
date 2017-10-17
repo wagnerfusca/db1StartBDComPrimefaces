@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org /1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>exemplo</title>
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+		
+			Ola #{sessionScope.usuario}! Voce esta logado.
+			<div class="row">
+			<p:commandButton value="Cadastrar UF" action="uf" />
+		</div>
+		<div class="row">
+			<p:commandButton value="Cadastrar Cidade" action="cidade" />
+		</div>
+		<div class="row">
+			<p:commandButton value=" Sair "
+				action="#{autenticacaoBean.registraSaida}" />
+		</div>
+
+	</h:form>
+
+</h:body>
+</html>

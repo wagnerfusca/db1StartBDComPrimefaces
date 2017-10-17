@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org /1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>exemplo</title>
+
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel id="panel">
+			<h:panelGrid columns="3" cellpadding="5">
+				<h:outputLabel value="Nome:" for="campo-nome" />
+				<p:inputText value="#{cidadeBean.cidade.nome}" id="campo-nome"
+					required="true" label="Nome"
+					validatorMessage="Digite somente letras" maxlength="50">
+					<f:validateRegex pattern="^[a-zA-Z-_ ]+$" />
+				</p:inputText>
+				<p:message for="campo-nome" display="text" />
+
+				<h:outputLabel value="UF:" for="campo-uf" />
+				<p:selectOneMenu value="#{cidadeBean.cidade.uf}" id="campo-uf"
+					requiredMessage="UF obrigatorio" label="UF" required="true">
+					<f:selectItem itemValue="" itemLabel="Selecione uma UF" />
+					<f:selectItems value="#{cidadeBean.listUf}" var="uf"
+						itemLabel="#{uf.nome}" itemValue="#{uf}" />
+				</p:selectOneMenu>
+				<p:message for="campo-uf" display="text" />
+			</h:panelGrid>
+		</p:panel>
+		<p:commandButton value="Salvar" action="#{cidadeBean.salvar}"
+			update="panel" />
+
+	</h:form>
+
+</h:body>
+</html>

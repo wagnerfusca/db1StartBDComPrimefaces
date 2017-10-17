@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org /1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>exemplo</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+
+		<p:messages id="messages" showDetail="true" autoUpdate="true"
+			closable="true" />
+		<p:panel id="panel" header="Filtrar">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="Pesquisar" />
+				<p:inputText id="nomeUfFiltrada" value="#{ufBean.nomeUfFiltrada}" />
+				<p:commandButton value="Filtrar" action="#{ufBean.listarUf}" update=":form:tabelaUf" />
+			</h:panelGrid>
+		</p:panel>
+
+		<p:dataTable value="#{ufBean.list}" var="item"
+			emptyMessage="Nao ha UF cadastradas" id="tabelaUf">
+			<p:column headerText="Id">
+				<h:outputText value="#{item.id}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<h:outputText value="#{item.nome}" />
+			</p:column>
+
+			<p:column style="width:32px;text-align: center">
+				<p:commandLink action="#{ufBean.editar(item)}">
+					<h:graphicImage library="imagem" name="edit.png" alt="Editar"
+						title="Editar" />
+				</p:commandLink>
+
+				<p:commandLink action="#{ufBean.remover(item)}">
+					<h:graphicImage library="imagem" name="trash.png" alt="Remover"
+						title="Remover" />
+				</p:commandLink>
+
+			</p:column>
+		</p:dataTable>
+		<p:commandButton value="Adicionar" action="#{ufBean.novo}" />
+	</h:form>
+</h:body>
+</html>

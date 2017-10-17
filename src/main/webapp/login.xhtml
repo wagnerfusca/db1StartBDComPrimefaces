@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org /1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>exemplo</title>
+
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+		<p:panel id="panel" header="Autenticacao">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="Usuario:" for="campo-usuario" />
+				<p:inputText value="#{autenticacaoBean.usuario}" id="campo-usuario"
+					required="true" label="Usuario" />
+
+
+				<h:outputLabel value="Senha:" for="campo-senha" />
+				<p:password value="#{autenticacaoBean.senha}" id="campo-senha"
+					required="true" label="Senha" />
+			</h:panelGrid>
+		</p:panel>
+		<p:commandButton value="Entrar" 
+			action="#{autenticacaoBean.autentica}" />
+
+	</h:form>
+
+</h:body>
+</html>
